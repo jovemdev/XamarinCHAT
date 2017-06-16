@@ -46,8 +46,8 @@ namespace Projeto.API.Controllers
         }
 
         [HttpPost]
-        [Route("send")]
-        public async Task<IHttpActionResult> Send(ChatViewModel messageInfo)
+        [Route("enviar")]
+        public async Task<IHttpActionResult> Enviar(ChatViewModel messageInfo)
         {
             string[] userTag = new string[2];
             userTag[0] = "username:" + messageInfo.To;
@@ -70,18 +70,7 @@ namespace Projeto.API.Controllers
 
             var result = new { sucess = true, message = ret == HttpStatusCode.OK ? "Mensagem enviada com sucesso." : "Ocorreu algum problema ao tentar enviar a mensagem." };
             return Ok(result);
-        }
-
-        private static void ReturnGoneIfHubResponseIsGone(MessagingException e)
-        {
-            var webex = e.InnerException as WebException;
-            if (webex.Status == WebExceptionStatus.ProtocolError)
-            {
-                var response = (HttpWebResponse)webex.Response;
-                if (response.StatusCode == HttpStatusCode.Gone)
-                    throw new HttpRequestException(HttpStatusCode.Gone.ToString());
-            }
-        }
+        }       
     }
 
     public class RegistroViewModel
