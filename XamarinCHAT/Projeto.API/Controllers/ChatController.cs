@@ -16,7 +16,7 @@ namespace Projeto.API.Controllers
 
         public ChatController()
         {
-            _hubClient = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://pushmaratona02.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=Qbm7rcQSSFEpf3ss7x/+EmCE2NQ9qeJ9eih6YRN+uP0=", "push-maratona02");
+            _hubClient = NotificationHubClient.CreateClientFromConnectionString("ENDPOINT_DO_PUSH", "NOME_DO_PUSH");
         }
 
         [HttpGet]
